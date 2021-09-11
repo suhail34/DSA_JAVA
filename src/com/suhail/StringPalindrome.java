@@ -1,7 +1,5 @@
 package com.suhail;
 
-import java.util.Locale;
-
 public class StringPalindrome {
     public static void main(String[] args) {
         String str = "abcdba";
