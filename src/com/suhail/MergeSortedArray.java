@@ -19,14 +19,15 @@ class MergeSortedArray {
 
         while(idx > 0 && arr1elem >= 0 && arr2elem >= 0) {
             if(nums1[arr1elem] > nums2[arr2elem]){
-                nums1[idx] = nums1[arr1elem];
-                idx --;
-                arr1elem--;
+                nums1[idx] = nums1[arr2elem];
+
+                arr1elem --;
             } else if(nums1[arr1elem] < nums2[arr2elem]){
-                nums1[idx] = nums2[arr2elem];
-                idx --;
+                nums1[idx] = nums2[arr1elem];
+
                 arr2elem --;
             }
+            idx--;
         }
 
 
