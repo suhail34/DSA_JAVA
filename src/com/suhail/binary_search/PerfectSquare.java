@@ -1,4 +1,4 @@
-package com.suhail;
+package com.suhail.binary_search;
 
 
 public class PerfectSquare {

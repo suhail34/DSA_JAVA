@@ -1,4 +1,4 @@
-package com.suhail;
+package com.suhail.strings;
 
 public class StringPalindrome {
     public static void main(String[] args) {

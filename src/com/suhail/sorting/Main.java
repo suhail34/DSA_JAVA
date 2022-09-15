@@ -1,4 +1,4 @@
-package com.suhail;
+package com.suhail.sorting;
 
 import java.util.Arrays;
 

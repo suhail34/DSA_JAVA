@@ -1,4 +1,4 @@
-package com.suhail;
+package com.suhail.binary_search;
 
 public class SmallestLetters {
     public static void main(String[] args) {

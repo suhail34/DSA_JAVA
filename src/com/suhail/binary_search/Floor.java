@@ -1,9 +1,9 @@
-package com.suhail;
+package com.suhail.binary_search;
 
-public class Ceiling {
+public class Floor {
     public static void main(String[] args) {
         int[] arr = {-3, -1, 0, 3, 6, 11, 15, 29};
-        int target = -5;
+        int target = 13;
         int ans = search(arr, target);
         System.out.println(ans);
     }
@@ -44,6 +44,6 @@ public class Ceiling {
             }
         }
 
-        return arr[start];
+        return arr[end];
     }
 }
