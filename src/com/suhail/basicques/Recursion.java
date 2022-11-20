@@ -1,4 +1,4 @@
-package com.suhail;
+package com.suhail.basicques;
 
 public class Recursion {
     public static void main(String[] args) {

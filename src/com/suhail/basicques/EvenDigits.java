@@ -1,4 +1,4 @@
-package com.suhail;
+package com.suhail.basicques;
 
 public class EvenDigits {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.suhail;
+package com.suhail.basicques;
 
 import java.util.Arrays;
 import java.util.Scanner;

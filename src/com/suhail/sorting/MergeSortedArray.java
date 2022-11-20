@@ -5,30 +5,55 @@ import java.util.Arrays;
 class MergeSortedArray {
 
     public static void main(String[] args) {
-        int[] arr1 = {1, 3, 5, 0, 0, 0};
-        int[] arr2 = {2, 4, 6};
-
-        merge(arr1,arr1.length, arr2, arr2.length);
-        System.out.println(Arrays.toString(arr1));
+        int[] arr = {2,1,0,5,9,3,7,4};
+//        int[] arr2 = {2, 4, 6, 9};
+        int[] ans = mergeSort(arr);
+        System.out.println(Arrays.toString(ans));
     }
 
-    public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        int arr1elem = m - 1;
-        int arr2elem = n - 1;
-        int idx = nums1.length - 1;
+    public static int[] mergeSort(int[] arr){
 
-        while(idx > 0 && arr1elem >= 0 && arr2elem >= 0) {
-            if(nums1[arr1elem] > nums2[arr2elem]){
-                nums1[idx] = nums1[arr1elem];
-                idx --;
-                arr1elem--;
-            } else if(nums1[arr1elem] < nums2[arr2elem]){
-                nums1[idx] = nums2[arr2elem];
-                idx --;
-                arr2elem --;
-            }
+        if(arr.length == 1){
+            return arr;
         }
 
+        int mid = arr.length/2;
+
+        int[] left = mergeSort(Arrays.copyOfRange(arr,0,mid));
+        int[] right = mergeSort(Arrays.copyOfRange(arr,mid,arr.length));
+
+        return merge(left,right);
+    }
+
+    public static int[] merge(int[] nums1, int[] nums2) {
+        int idx1 = 0;
+        int idx2 = 0;
+        int k = 0;
+        int temparr[]=new int[nums1.length+nums2.length];
+
+        while(idx1<nums1.length && idx2<nums2.length) {
+            if(nums1[idx1]<nums2[idx2]){
+                temparr[k]=nums1[idx1];
+                idx1++;
+            }else {
+                temparr[k]=nums2[idx2];
+                idx2++;
+            }
+            k++;
+        }
+
+        while(idx1<nums1.length){
+            temparr[k]=nums1[idx1];
+            idx1++;
+            k++;
+        }
+
+        while (idx2<nums2.length){
+            temparr[k]=nums2[idx2];
+            idx2++;
+            k++;
+        }
+        return temparr;
 
     }
 }
