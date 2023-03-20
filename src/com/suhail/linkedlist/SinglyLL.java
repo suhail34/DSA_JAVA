@@ -195,6 +195,90 @@ public class SinglyLL {
         return ans;
     }
 
+    public void bubbleSort(){
+        bubbleSort(size-1,0);
+    }
+
+    public void bubbleSort(int row, int col){
+        if(row == 0){
+            return;
+        }
+
+        if(col < row){
+            Node first = get(col);
+            Node second = get(col+1);
+            if(first.val > second.val){
+                if(first == head){
+                    head = second;
+                    first.next=second.next;
+                    second.next=first;
+                }else if(second == tail){
+                    Node prev = get(col-1);
+                    prev.next=second;
+                    tail = first;
+                    first.next=null;
+                    second.next=tail;
+                } else {
+                    Node prev = get(col-1);
+                    prev.next = second;
+                    first.next=second.next;
+                    second.next=first;
+                }
+            }
+            bubbleSort(row, col+1);
+        }else{
+            bubbleSort(row-1, 0);
+        }
+    }
+
+    // Recursive method
+    public void reverse(Node node){
+
+        if(node==tail){
+            head=tail;
+            return ;
+        }
+
+        reverse(node.next);
+        tail.next=node;
+        tail=node;
+        tail.next=null;
+
+    }
+
+    // Iterative method
+    public void reverseIter(){
+        if(head==null){
+            return;
+        }
+
+        Node prev=null;
+        Node present = head;
+        Node next = present.next;
+
+        while(present!=null){
+            present.next=prev;
+            prev=present;
+            present=next;
+            if(next!=null){
+                next=next.next;
+            }
+        }
+        head=prev;
+    }
+
+    public Node middleNode(Node head){
+        Node f=head;
+        Node s = head;
+
+        while(f!=null && s!=null){
+            f = f.next.next;
+            s = s.next;
+        }
+
+        return s;
+    }
+
     public static void main(String[] args) {
 //        SinglyLL list = new SinglyLL();
 //        list.insertLast(1);
@@ -207,20 +291,32 @@ public class SinglyLL {
 //
 //        list.duplicates();
 //        list.display();
-        SinglyLL list1 = new SinglyLL();
-        SinglyLL list2 = new SinglyLL();
+//        SinglyLL list1 = new SinglyLL();
+//        SinglyLL list2 = new SinglyLL();
+//
+//        list1.insertLast(1);
+//        list1.insertLast(3);
+//        list1.insertLast(5);
+//
+//        list2.insertLast(1);
+//        list2.insertLast(2);
+//        list2.insertLast(4);
+//        list2.insertLast(9);
+//
+//        SinglyLL l1l2=SinglyLL.merge(list1,list2);
+//        l1l2.display();
+        SinglyLL list = new SinglyLL();
 
-        list1.insertLast(1);
-        list1.insertLast(3);
-        list1.insertLast(5);
-
-        list2.insertLast(1);
-        list2.insertLast(2);
-        list2.insertLast(4);
-        list2.insertLast(9);
-
-        SinglyLL l1l2=SinglyLL.merge(list1,list2);
-        l1l2.display();
+        for(int i=7; i>0; i--){
+            list.insertLast(i);
+        }
+        list.display();
+        list.bubbleSort();
+        list.display();
+        list.reverse(list.head);
+        list.display();
+        list.reverseIter();
+        list.display();
     }
 
 }
