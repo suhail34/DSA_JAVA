@@ -1,5 +1,7 @@
 package com.suhail.heaps;
 
+import java.util.PriorityQueue;
+
 public class Heap {
     int[] arr = new int[100];
     int size;
@@ -64,10 +66,10 @@ public class Heap {
         int right = 2*idx + 1;
         int left = 2*idx;
 
-        if(left < size && arr[largest]<arr[left]) {
+        if(left <= size && arr[largest]<arr[left]) {
             largest=left;
         }
-        if(right < size && arr[largest]<arr[right]) {
+        if(right <= size && arr[largest]<arr[right]) {
             largest=right;
         }
 
@@ -84,6 +86,21 @@ public class Heap {
             System.out.print(arr[idx]+" ");
         }
         System.out.println();
+    }
+
+    public static void heapsort(int[] arr, int size) {
+        int t = size;
+
+        while (t > 1) {
+            // step 1 swap root element of heap with last element
+            int temp = arr[t];
+            arr[t] = arr[1];
+            arr[1] = temp;
+            t--;
+
+            // step 2 heapify the swapped element
+            heapify(arr, t, 1);
+        }
     }
 
     public static void main(String[] args) {
@@ -104,6 +121,13 @@ public class Heap {
             heapify(arr, size, idx);
         }
 
+        for (int idx = 1; idx <= size; idx++) {
+            System.out.print(arr[idx]+" ");
+        }
+        System.out.println();
+
+        heapsort(arr, size);
+        System.out.println("HeapSort : ");
         for (int idx = 1; idx <= size; idx++) {
             System.out.print(arr[idx]+" ");
         }
