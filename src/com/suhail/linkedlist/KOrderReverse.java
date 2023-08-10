@@ -15,8 +15,8 @@ public class KOrderReverse {
         ListNode second = new ListNode(2,third);
         ListNode first = new ListNode(3,second);
         display(first);
-        reverseKGroup(first,2);
-        display(first);
+        display(reverseKGroup(first,2));
+//        display(first);
     }
 
     public static void display(ListNode head) {
